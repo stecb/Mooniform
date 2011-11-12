@@ -1,7 +1,7 @@
 /*
   Porting of uniform, from jQuery to mootools
   
-  By Stefano Ceschi Berrini - @stecb
+  By Stefano Ceschi Berrini - @stecb - steweb.it
   
 */
 
