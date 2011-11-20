@@ -81,7 +81,7 @@ All the options of the Mooniform (most of all are about css classes):
   	//style new elements (loaded by ajax i.e.)
   	  mooniformInstance.lookup(elementsToStyle);
 	
-  	//if you want to reset a forms
+  	//if you want to reset a form
       myForm.reset();
       mooniformInstance.update();
 
