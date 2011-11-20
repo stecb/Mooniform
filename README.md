@@ -75,16 +75,15 @@ All the options of the Mooniform (most of all are about css classes):
 ### Examples
 
 	#JS
+  	var elementsToStyle = $$('select, input[type="checkbox"], input[type="radio"], input[type="file"]'),
+  	    mooniformInstance = new Mooniform(elementsToStyle);
 	
-	var elementsToStyle = $$('select, input[type="checkbox"], input[type="radio"], input[type="file"]'),
-	    mooniformInstance = new Mooniform(elementsToStyle);
+  	//style new elements (loaded by ajax i.e.)
+  	  mooniformInstance.lookup(elementsToStyle);
 	
-	//style new elements (loaded by ajax i.e.)
-	mooniformInstance.lookup(elementsToStyle);
-	
-	//If you want to reset a forms
-  myForm.reset();
-  mooniformInstance.update();
+  	//if you want to reset a forms
+      myForm.reset();
+      mooniformInstance.update();
 
 License
 -------
