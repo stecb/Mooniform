@@ -1,1 +1,36 @@
-My GitHub Page
+<!doctype html>
+  <head>
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+  	<title>Mooniform Demo</title>
+  	<meta name="description" content="Make your form controls look how you want them to">
+  	<meta name="author" content="Stefano Ceschi Berrini ~ @stecb">
+	
+  	<link rel="stylesheet" href="./Source/css/mooniform.default.css">
+	
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  	<div id="container">
+  		<header>
+        <h1>Mooclock: a lightweight mootools plugin to show a dynamic clock by html5 &lt;canvas&gt; or VML (for IE &lt; 9)</h2>
+        <a href="https://github.com/stecb/mooclock" target="_blank" class="forkmegithub"></a>
+  		</header>
+  		
+  		<select>
+          <option value='option1'>Option 1</option>
+          <option value='option2'>Option 2</option>
+          <option value='option3'>Option 3</option>
+      </select>
+  		
+  	</div>
+  	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.3.2/mootools-yui-compressed.js"></script>
+  	<script src="./Source/mooniform.js"></script>
+  	<script>
+  	  window.addEvent('domready', function(){
+  	    var mooniformInstance = new Mooniform($$('select'));
+  	  });
+  	</script>
+  </body>
+<html>
