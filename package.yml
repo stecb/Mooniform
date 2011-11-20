@@ -1,0 +1,14 @@
+name: Mooniform
+author: stecb
+current: 1.0
+category: Widgets
+tags: [Form, Calendar, Picker]
+demo: http://github.com/
+docs: http://github.com/stecb/mooniform/blob/master/README.md
+copyright: "&copy; [Stefano Ceschi Berrini](http://www.steweb.it) and [pixelmatrix](https://github.com/pixelmatrix)"
+license: MIT
+web: "[aryweb.nl/projects/mootools-datepicker](http://www.aryweb.nl/projects/mootools-datepicker/)"
+description: MooTools Uniform class
+
+sources:
+  - "Source/mooniform.js"

@@ -1,8 +1,18 @@
 /*
-  Porting of uniform, from jQuery to mootools
-  
-  By Stefano Ceschi Berrini - @stecb - steweb.it
-  
+---
+description: Mooniform, "Make your form controls look how you want them to". Porting of uniform, from jQuery to mootools.
+
+license: MIT-style
+
+authors:
+- [Stefano Ceschi Berrini - @stecb](http://steweb.it)
+
+requires:
+- core/1.4: '*'
+
+provides: [Mooniform]
+
+...
 */
 
 var Mooniform = new Class({
