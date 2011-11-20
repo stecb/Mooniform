@@ -16,9 +16,9 @@ Basic Example
 First of all you need to include the following html tags:
 
 	#HTML
-	<script src="../Source/mooniform.js" type="text/javascript"></script>
+	<script src="./Source/mooniform.js" type="text/javascript"></script>
 
-	<link href="../Source/css/mooniform.default.css" rel="stylesheet">
+	<link href="./Source/css/mooniform.default.css" rel="stylesheet">
 
 Then you can simply use it in this way, for example:
 
