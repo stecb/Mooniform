@@ -1,4 +1,4 @@
-MooTools-DatePicker
+Mooniform
 ===================
 
 Mooniform is the porting of the famous jquery plugin [uniform](http://uniformjs.com) (by [pixelmatrix](https://github.com/pixelmatrix)) to mootools.
