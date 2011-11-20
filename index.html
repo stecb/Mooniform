@@ -6,30 +6,175 @@
   	<title>Mooniform Demo</title>
   	<meta name="description" content="Make your form controls look how you want them to">
   	<meta name="author" content="Stefano Ceschi Berrini ~ @stecb">
-	
+	  
+	  <link rel="stylesheet" href="./css/style.css">
   	<link rel="stylesheet" href="./Source/css/mooniform.default.css">
 	
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	
+  	<style>
+  	  h1{
+  	    font-size:28px;
+  	    margin-bottom:10px;
+    	}
+    	h1 span{
+    	  display:block;
+    	  font-size:18px;
+  	  }
+  	  h2{
+  	    font-size:22px;
+  	    margin:20px;
+  	  }
+  	  #container{
+  	    margin:10px;
+  	  }
+    	.forkmegithub{
+        position:absolute;
+        top:0;
+        right:0;
+        display:block;
+        width:149px;
+        height:149px;
+        background:url(./img/fork.png) no-repeat center center;
+      }
+      label{
+        display:block;
+        padding:3px;
+      }
+      form div{
+        padding:10px;
+      }
+      .info{
+        margin:20px;
+      }
+      footer{
+        text-align:center;
+        padding:10px;
+      }
+  	</style>
+  	
   </head>
   <body>
   	<div id="container">
   		<header>
-        <h1>Mooclock: a lightweight mootools plugin to show a dynamic clock by html5 &lt;canvas&gt; or VML (for IE &lt; 9)</h2>
-        <a href="https://github.com/stecb/mooclock" target="_blank" class="forkmegithub"></a>
+        <h1>Mooniform: Sexy form with mootools <span>(port of jQuery plugin <a href="http://uniformjs.com/">uniform</a>)</span></h2>
+        <a href="https://github.com/stecb/Mooniform" target="_blank" class="forkmegithub"></a>
   		</header>
   		
-  		<select>
-          <option value='option1'>Option 1</option>
-          <option value='option2'>Option 2</option>
-          <option value='option3'>Option 3</option>
-      </select>
+  		<section id="what">
+  		  <div class="info">
+  		  Have you ever wished you could style checkboxes, drop down menus, radio buttons, and file upload inputs? Ever wished you could control the look and feel of your form elements between all browsers?
+
+        If so, Mooniform is your new best friend.
+
+        Mooniform masks your standard form controls with custom themed controls. It works in sync with your real form elements to ensure accessibility and compatibility.
+        </div>
+        <div class="info">
+          <h3>Uniform styles:</h3>
+          <ul>
+            <li>Selects (Drop downs)</li>
+            <li>Checkboxes</li>
+            <li>Radio buttons</li>
+            <li>File Upload inputs</li>
+          </ul>
+          
+          <h3>Tested &amp; Compatible in:</h3>
+          <ul>
+            <li>Safari 3+</li>
+            <li>Firefox 3+</li>
+            <li>IE7+</li>
+            <li>Chrome</li>
+            <li>jQuery 1.3+</li>
+            <li>Opera 10+</li>
+            <li>Degrades gracefully in IE6</li>
+          <ul>
+        </div>
+  		</section>
   		
+  		<h2>Demo</h2>
+  		
+  		<form id="main-form">
+        <div class='select-radio'>
+          <label>Select Dropdown</label>
+          <select>
+            <option value='option1'>Option 1</option>
+            <option value='option2'>Option 2</option>
+            <option value='option3'>Option 3</option>
+          </select>
+          <label>
+            <input name='rgroup' type='radio' value='radio1' />
+            Radio 1
+          </label>
+          <label>
+            <input checked='checked' name='rgroup' type='radio' value='radio2' />
+            Radio 2
+          </label>
+          <label>
+            <input disabled='disabled' name='rgroup' type='radio' value='radio3' />
+            Radio 3
+          </label>
+        </div>
+        <div class='file-checkbox'>
+          <label>File Upload</label>
+          <input class='file' type='file' />
+          <label>
+            <input type='checkbox' value='check1' />
+            Checkbox 1
+          </label>
+          <label>
+            <input checked='checked' type='checkbox' value='check2' />
+            Checkbox 2
+          </label>
+          <label>
+            <input disabled='disabled' type='checkbox' value='check3' />
+            Checkbox 3
+          </label>
+        </div>
+      </form>
+      <div class='controls'>
+        <a rel="disable" class="btn" href="#">Disable All</a>
+        <a rel="reset" class="btn" href="#">Reset All</a>
+      </div>  		
   	</div>
-  	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.3.2/mootools-yui-compressed.js"></script>
+  	
+  	<footer>
+      <a href="http://twitter.com/stecb">@stecb</a>
+		</footer>
+  	<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
   	<script src="./Source/mooniform.js"></script>
   	<script>
   	  window.addEvent('domready', function(){
-  	    var mooniformInstance = new Mooniform($$('select'));
+  	    
+  	    var 
+  	        
+  	        mainForm = $('main-form'),
+  	        elements = mainForm.getElements('select, input[type="checkbox"], input[type="radio"], input[type="file"]'),
+  	        mooniformInstance = new Mooniform(elements),
+  	        controls = $$('.controls')[0]
+  	    
+  	    ;
+  	    
+  	    controls.addEvent('click:relay(a)', function(evt){
+  	      evt.stop();
+  	      switch(this.get('rel')){
+  	        case "disable" : 
+  	          elements.set('disabled','disabled');
+    	        mooniformInstance.update();
+    	        this.set({'rel': 'enable', 'text' : 'Enable All'});
+  	        break;
+  	        case "reset" : 
+  	          mainForm.reset();
+    	        mooniformInstance.update();
+  	        break;
+            case "enable" : 
+              elements.set('disabled','');
+    	        mooniformInstance.update();
+    	        this.set({'rel': 'disable', 'text' : 'Disable All'});
+  	        break;
+  	      }
+  	    })
+  	    
+  	    
   	  });
   	</script>
   </body>
