@@ -1,7 +1,7 @@
 name: Mooniform
 author: stecb
 current: 1.0
-category: Widgets
+category: Forms
 tags: [Form, Select, Checkbox, Radio, File]
 demo: http://stecb.github.com/Mooniform
 docs: http://github.com/stecb/mooniform/blob/master/README.md
