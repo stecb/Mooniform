@@ -37,7 +37,8 @@ var Mooniform = new Class({
     useID:              true,
     idPrefix:           'mooniform',
     resetSelector:      false,
-    autoHide:           true
+    autoHide:           true,
+    selectAutoWidth: false
   },
   
   elements : [],
@@ -118,8 +119,23 @@ var Mooniform = new Class({
   _doSelect : function( elem ){
     
     var divElement = new Element('div'),
-        spanElement = new Element('span');
+        spanElement = new Element('span'),
+        origElemWidth = elem.getComputedSize().width;
     
+    if (origElemWidth < 1) {
+      elem.setStyles({
+        'position': 'absolute',
+        'display': 'block'
+      }).show();
+
+      origElemWidth = elem.getWidth();
+
+      elem.setStyles({
+        'position': '',
+        'display': ''
+      }).hide();
+    }
+
     if(!elem.getStyle("display") === "none" && this.options.autoHide){
       divElement.hide();
     }
@@ -141,6 +157,16 @@ var Mooniform = new Class({
     elem.setStyle('opacity', 0).setStyle('visibility','');
     divElement.inject(elem, 'before').adopt(elem);
     spanElement.inject(elem, 'before');
+    
+    if (this.options.selectAutoWidth) {
+      // This needs some critical review
+      divElement.setStyle('width', new Element('div').getWidth() - new Element('span').getWidth() + origElemWidth + 25);
+      px = divElement.getStyle('padding-left').toInt();
+      spanElement.setStyle('width', origElemWidth - px - 10);
+      elem.setStyle('width', origElemWidth + px);
+      elem.setStyle('min-width', origElemWidth + px + 'px');
+      divElement.setStyle('width', origElemWidth + px);
+    }
 
     //redefine variables
     divElement = elem.getParent("div");
