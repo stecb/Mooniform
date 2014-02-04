@@ -504,7 +504,9 @@ var Mooniform = new Class({
         divTag.removeClass(o.hoverClass).removeClass(o.focusClass).removeClass(o.activeClass);
 
         //reset current selected text
-        spanTag.set('html',el.getSelected()[0].get('html'));
+        Browser.ie ? 
+            spanTag.set('text',el.getSelected()[0].get('text')) : 
+            spanTag.set('html',el.getSelected()[0].get('html'));
 
         if(el.get("disabled")){
           divTag.addClass(o.disabledClass);
